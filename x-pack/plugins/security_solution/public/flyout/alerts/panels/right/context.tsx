@@ -7,6 +7,7 @@
 
 import type { BrowserFields, TimelineEventsDetailsItem } from '@kbn/timelines-plugin/common';
 import React, { createContext, useContext } from 'react';
+import type { SearchHit } from '@kbn/es-types';
 import { useTimelineEventsDetails } from '../../../../timelines/containers/details';
 import { getAlertIndexAlias } from '../../../../timelines/components/side_panel/event_details/helpers';
 import { useSpaceId } from '../../../../common/hooks/use_space_id';
@@ -33,6 +34,10 @@ export interface RightPanelContext {
    *
    */
   dataFormattedForFieldBrowser: TimelineEventsDetailsItem[] | null;
+  /**
+   *
+   */
+  searchHit: SearchHit<object> | undefined;
 }
 
 export const RightPanelContext = createContext<RightPanelContext | undefined>(undefined);
@@ -53,7 +58,7 @@ export const RightPanelProvider = ({ id, indexName, children }: RightPanelProvid
       ? SourcererScopeName.detections
       : SourcererScopeName.default;
   const sourcererDataView = useSourcererDataView(sourcererScope);
-  const [loading, dataFormattedForFieldBrowser] = useTimelineEventsDetails({
+  const [loading, dataFormattedForFieldBrowser, searchHit] = useTimelineEventsDetails({
     indexName: eventIndex,
     eventId: id ?? '',
     runtimeMappings: sourcererDataView.runtimeMappings,
@@ -65,6 +70,7 @@ export const RightPanelProvider = ({ id, indexName, children }: RightPanelProvid
     indexName: indexName as string,
     browserFields: sourcererDataView.browserFields as BrowserFields,
     dataFormattedForFieldBrowser: dataFormattedForFieldBrowser as TimelineEventsDetailsItem[],
+    searchHit: searchHit as SearchHit<object>,
   };
 
   return (

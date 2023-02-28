@@ -7,4 +7,4 @@
 
 export const OVERVIEW_TAB_CONTENT_TEST_ID = 'securitySolutionAlertDetailsFlyoutOverviewTabContent';
 export const TABLE_TAB_CONTENT_TEST_ID = 'event-fields-browser';
-export const JSON_TAB_CONTENT_TEST_ID = 'securitySolutionAlertDetailsFlyoutJsonTabContent';
+export const JSON_TAB_CONTENT_TEST_ID = 'jsonView';

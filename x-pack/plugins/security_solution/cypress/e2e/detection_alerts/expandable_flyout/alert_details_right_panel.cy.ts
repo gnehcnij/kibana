@@ -15,6 +15,7 @@ import {
   ALERT_DETAILS_FLYOUT_OVERVIEW_TAB_CONTENT,
   ALERT_DETAILS_FLYOUT_TABLE_TAB,
   ALERT_DETAILS_FLYOUT_TABLE_TAB_CONTENT,
+  ALERT_DETAILS_FLYOUT_TABLE_TAB_EVENT_TYPE_ROW,
 } from '../../../screens/alert_details_expandable_flyout';
 import {
   collapseAlertDetailsExpandableFlyoutLeftSection,
@@ -23,6 +24,7 @@ import {
   openJsonTab,
   openOverviewTab,
   openTableTab,
+  scrollWithinAlertDetailsExpandableFlyoutRightSection,
 } from '../../../tasks/alert_details_expandable_flyout';
 import { cleanKibana } from '../../../tasks/common';
 import { login, visit } from '../../../tasks/login';
@@ -33,7 +35,7 @@ import { waitForAlertsToPopulate } from '../../../tasks/create_new_rule';
 
 // Skipping these for now as the feature is protected behind a feature flag set to false by default
 // To run the tests locally, add 'securityFlyoutEnabled' in the Cypress config.ts here https://github.com/elastic/kibana/blob/main/x-pack/test/security_solution_cypress/config.ts#L50
-describe('Alert details expandable flyout right panel', { testIsolation: false }, () => {
+describe.skip('Alert details expandable flyout right panel', { testIsolation: false }, () => {
   before(() => {
     cleanKibana();
     login();
@@ -72,10 +74,16 @@ describe('Alert details expandable flyout right panel', { testIsolation: false }
     cy.get(ALERT_DETAILS_FLYOUT_OVERVIEW_TAB_CONTENT).should('be.visible');
 
     openTableTab();
-    cy.get('[data-test-subj="event-fields-table-row-event.type"]').scrollIntoView(); // hack to make next line work
+    // the table component is rendered within a dom element with overflow, so Cypress isn't finding it
+    // this next line is a hack that scrolls to a specific element in the table
+    // (in the middle of it vertically) to ensure Cypress finds it
+    cy.get(ALERT_DETAILS_FLYOUT_TABLE_TAB_EVENT_TYPE_ROW).scrollIntoView();
     cy.get(ALERT_DETAILS_FLYOUT_TABLE_TAB_CONTENT).should('be.visible');
 
     openJsonTab();
+    // the json component is rendered within a dom element with overflow, so Cypress isn't finding it
+    // this next line is a hack that scrolls to the middle of it (vertically) to ensure Cypress finds it
+    scrollWithinAlertDetailsExpandableFlyoutRightSection(0, 4500);
     cy.get(ALERT_DETAILS_FLYOUT_JSON_TAB_CONTENT).should('be.visible');
   });
 });

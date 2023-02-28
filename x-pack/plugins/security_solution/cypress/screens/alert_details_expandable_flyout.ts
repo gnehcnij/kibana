@@ -43,6 +43,7 @@ import { FLYOUT_HEADER_TITLE } from '../../public/flyout/alerts/panels/right/com
 /* Right section */
 
 export const ALERT_DETAILS_FLYOUT_BODY = `[data-test-subj="${FLYOUT_BODY_TEST_ID}"]`;
+export const ALERT_DETAILS_FLYOUT_BODY_OVERFLOW = `.euiFlyoutBody__overflow`;
 export const ALERT_DETAILS_FLYOUT_HEADER_TITLE = `[data-test-subj="${FLYOUT_HEADER_TITLE}"]`;
 export const ALERT_DETAILS_FLYOUT_EXPAND_DETAILS_BUTTON = `[data-test-subj="${EXPAND_DETAILS_BUTTON}"]`;
 export const ALERT_DETAILS_FLYOUT_COLLAPSE_DETAILS_BUTTON = `[data-test-subj="${COLLAPSE_DETAILS_BUTTON}"]`;
@@ -74,6 +75,7 @@ export const ALERT_DETAILS_FLYOUT_TABLE_TAB_FILTER = `.euiFieldSearch`;
 export const ALERT_DETAILS_FLYOUT_TABLE_TAB_CLEAR_FILTER = `[data-test-subj="clearSearchButton"]`;
 export const ALERT_DETAILS_FLYOUT_TABLE_TAB_TIMESTAMP_ROW = `[data-test-subj="event-fields-table-row-@timestamp"]`;
 export const ALERT_DETAILS_FLYOUT_TABLE_TAB_ID_ROW = `[data-test-subj="event-fields-table-row-_id"]`;
+export const ALERT_DETAILS_FLYOUT_TABLE_TAB_EVENT_TYPE_ROW = `[data-test-subj="event-fields-table-row-event.type"]`;
 export const ALERT_DETAILS_FLYOUT_TABLE_TAB_ROW_CELL_FILTER_IN = `[data-test-subj="actionItem-security-detailsFlyout-cellActions-filterIn"]`;
 export const ALERT_DETAILS_FLYOUT_TABLE_TAB_ROW_CELL_FILTER_OUT = `[data-test-subj="actionItem-security-detailsFlyout-cellActions-filterOut"]`;
 export const ALERT_DETAILS_FLYOUT_TABLE_TAB_ROW_CELL_MORE_ACTIONS = `[data-test-subj="showExtraActionsButton"]`;

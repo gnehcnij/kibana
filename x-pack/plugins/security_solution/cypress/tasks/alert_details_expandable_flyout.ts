@@ -7,6 +7,7 @@
 
 import {
   ALERT_DETAILS_FLYOUT_BODY,
+  ALERT_DETAILS_FLYOUT_BODY_OVERFLOW,
   ALERT_DETAILS_FLYOUT_COLLAPSE_DETAILS_BUTTON,
   ALERT_DETAILS_FLYOUT_EXPAND_DETAILS_BUTTON,
   ALERT_DETAILS_FLYOUT_HISTORY_TAB,
@@ -45,6 +46,14 @@ export const expandAlertDetailsExpandableFlyoutLeftSection = () =>
  */
 export const collapseAlertDetailsExpandableFlyoutLeftSection = () =>
   cy.get(ALERT_DETAILS_FLYOUT_COLLAPSE_DETAILS_BUTTON).click();
+
+/**
+ * Scroll to x-y positions within the right section of the alert details expandable flyout
+ */
+export const scrollWithinAlertDetailsExpandableFlyoutRightSection = (x: number, y: number) =>
+  cy.get(ALERT_DETAILS_FLYOUT_BODY).within(() => {
+    cy.get(ALERT_DETAILS_FLYOUT_BODY_OVERFLOW).scrollTo(x, y);
+  });
 
 /**
  * Open the Overview tab in the alert details expandable flyout right section
