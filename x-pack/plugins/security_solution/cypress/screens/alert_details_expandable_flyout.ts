@@ -38,13 +38,13 @@ import {
   OVERVIEW_TAB_CONTENT_TEST_ID,
   TABLE_TAB_CONTENT_TEST_ID,
 } from '../../public/flyout/alerts/panels/right/tabs/test_ids';
-import { FLYOUT_HEADER_TITLE } from '../../public/flyout/alerts/panels/right/components/test_ids';
+import { FLYOUT_HEADER_TITLE_TEST_ID } from '../../public/flyout/alerts/panels/right/components/test_ids';
 
 /* Right section */
 
 export const ALERT_DETAILS_FLYOUT_BODY = `[data-test-subj="${FLYOUT_BODY_TEST_ID}"]`;
 export const ALERT_DETAILS_FLYOUT_BODY_OVERFLOW = `.euiFlyoutBody__overflow`;
-export const ALERT_DETAILS_FLYOUT_HEADER_TITLE = `[data-test-subj="${FLYOUT_HEADER_TITLE}"]`;
+export const ALERT_DETAILS_FLYOUT_HEADER_TITLE = `[data-test-subj="${FLYOUT_HEADER_TITLE_TEST_ID}"]`;
 export const ALERT_DETAILS_FLYOUT_EXPAND_DETAILS_BUTTON = `[data-test-subj="${EXPAND_DETAILS_BUTTON}"]`;
 export const ALERT_DETAILS_FLYOUT_COLLAPSE_DETAILS_BUTTON = `[data-test-subj="${COLLAPSE_DETAILS_BUTTON}"]`;
 export const ALERT_DETAILS_FLYOUT_OVERVIEW_TAB = `[data-test-subj="${OVERVIEW_TAB_TEST_ID}"]`;
