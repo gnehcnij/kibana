@@ -8,21 +8,21 @@
 import { i18n } from '@kbn/i18n';
 
 export const VISUALIZE_BUTTONGROUP_OPTIONS = i18n.translate(
-  'xpack.securitySolution.flyout.alertDetails.visualizeOptions',
+  'xpack.securitySolution.flyout.documentDetails.visualizeOptions',
   {
     defaultMessage: 'Visualize options',
   }
 );
 
 export const SESSION_VIEW_BUTTON = i18n.translate(
-  'xpack.securitySolution.flyout.alertDetails.sessionViewButton',
+  'xpack.securitySolution.flyout.documentDetails.sessionViewButton',
   {
     defaultMessage: 'Session View',
   }
 );
 
 export const ANALYZER_GRAPH_BUTTON = i18n.translate(
-  'xpack.securitySolution.flyout.alertDetails.analyserGraphButton',
+  'xpack.securitySolution.flyout.documentDetails.analyserGraphButton',
   {
     defaultMessage: 'Analyzer Graph',
   }

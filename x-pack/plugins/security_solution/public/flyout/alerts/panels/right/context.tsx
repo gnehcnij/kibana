@@ -6,8 +6,10 @@
  */
 
 import type { BrowserFields, TimelineEventsDetailsItem } from '@kbn/timelines-plugin/common';
+import { css } from '@emotion/react';
 import React, { createContext, useContext } from 'react';
 import type { SearchHit } from '@kbn/es-types';
+import { EuiFlexItem, EuiLoadingSpinner } from '@elastic/eui';
 import { useTimelineEventsDetails } from '../../../../timelines/containers/details';
 import { getAlertIndexAlias } from '../../../../timelines/components/side_panel/event_details/helpers';
 import { useSpaceId } from '../../../../common/hooks/use_space_id';
@@ -73,11 +75,20 @@ export const RightPanelProvider = ({ id, indexName, children }: RightPanelProvid
     searchHit: searchHit as SearchHit<object>,
   };
 
-  return (
-    <RightPanelContext.Provider value={contextValue}>
-      {loading ? <>{'loading...'}</> : children}
-    </RightPanelContext.Provider>
-  );
+  if (loading) {
+    return (
+      <EuiFlexItem
+        css={css`
+          align-items: center;
+          justify-content: center;
+        `}
+      >
+        <EuiLoadingSpinner size="xxl" />
+      </EuiFlexItem>
+    );
+  }
+
+  return <RightPanelContext.Provider value={contextValue}>{children}</RightPanelContext.Provider>;
 };
 
 export const useRightPanelContext = (): RightPanelContext => {

@@ -8,26 +8,29 @@
 import { i18n } from '@kbn/i18n';
 
 export const VISUALIZE_TAB = i18n.translate(
-  'xpack.securitySolution.flyout.alertDetails.visualizeTab',
+  'xpack.securitySolution.flyout.documentDetails.visualizeTab',
   {
     defaultMessage: 'Visualize',
   }
 );
 
 export const INSIGHTS_TAB = i18n.translate(
-  'xpack.securitySolution.flyout.alertDetails.insightsTab',
+  'xpack.securitySolution.flyout.documentDetails.insightsTab',
   {
     defaultMessage: 'Insights',
   }
 );
 
 export const INVESTIGATIONS_TAB = i18n.translate(
-  'xpack.securitySolution.flyout.alertDetails.investigationsTab',
+  'xpack.securitySolution.flyout.documentDetails.investigationsTab',
   {
     defaultMessage: 'Investigation',
   }
 );
 
-export const HISTORY_TAB = i18n.translate('xpack.securitySolution.flyout.alertDetails.historyTab', {
-  defaultMessage: 'History',
-});
+export const HISTORY_TAB = i18n.translate(
+  'xpack.securitySolution.flyout.documentDetails.historyTab',
+  {
+    defaultMessage: 'History',
+  }
+);

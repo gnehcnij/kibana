@@ -8,11 +8,11 @@
 import { i18n } from '@kbn/i18n';
 
 export const EXPAND_DETAILS_BUTTON = i18n.translate(
-  'xpack.securitySolution.flyout.alertDetails.expandDetailButton',
+  'xpack.securitySolution.flyout.documentDetails.expandDetailButton',
   { defaultMessage: 'Expand alert details' }
 );
 
 export const COLLAPSE_DETAILS_BUTTON = i18n.translate(
-  'xpack.securitySolution.flyout.alertDetails.collapseDetailButton',
+  'xpack.securitySolution.flyout.documentDetails.collapseDetailButton',
   { defaultMessage: 'Collapse alert details' }
 );

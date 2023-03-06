@@ -7,9 +7,12 @@
 
 import type { FC } from 'react';
 import React, { memo } from 'react';
+import { EuiEmptyPrompt } from '@elastic/eui';
+import { ERROR_MESSAGE, ERROR_TITLE } from './translations';
 import { TimelineTabs } from '../../../../../../common/types';
 import { EventFieldsBrowser } from '../../../../../common/components/event_details/event_fields_browser';
 import { useRightPanelContext } from '../context';
+import { TABLE_TAB_ERROR_TEST_ID } from './test_ids';
 
 /**
  * Table view displayed in the alert details expandable flyout right section
@@ -17,19 +20,28 @@ import { useRightPanelContext } from '../context';
 export const TableTab: FC = memo(() => {
   const { browserFields, dataFormattedForFieldBrowser, eventId } = useRightPanelContext();
 
-  return (
-    browserFields &&
-    dataFormattedForFieldBrowser && (
-      <EventFieldsBrowser
-        browserFields={browserFields}
-        data={dataFormattedForFieldBrowser}
-        eventId={eventId}
-        isDraggable={false}
-        timelineTabType={TimelineTabs.query}
-        scopeId={'alert-details-flyout'}
-        isReadOnly={false}
+  if (!browserFields || !eventId || !dataFormattedForFieldBrowser) {
+    return (
+      <EuiEmptyPrompt
+        iconType="error"
+        color="danger"
+        title={<h2>{ERROR_TITLE}</h2>}
+        body={<p>{ERROR_MESSAGE}</p>}
+        data-test-subj={TABLE_TAB_ERROR_TEST_ID}
       />
-    )
+    );
+  }
+
+  return (
+    <EventFieldsBrowser
+      browserFields={browserFields}
+      data={dataFormattedForFieldBrowser}
+      eventId={eventId}
+      isDraggable={false}
+      timelineTabType={TimelineTabs.query}
+      scopeId={'alert-details-flyout'}
+      isReadOnly={false}
+    />
   );
 });
 
