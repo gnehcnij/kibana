@@ -24,6 +24,7 @@ import {
   VISUALIZE_TAB_TEST_ID,
 } from '../../public/flyout/left/test_ids';
 import {
+  FLYOUT_BODY_TEST_ID,
   JSON_TAB_TEST_ID,
   OVERVIEW_TAB_TEST_ID,
   TABLE_TAB_TEST_ID,
@@ -38,8 +39,12 @@ import {
   EXPAND_DETAILS_BUTTON_TEST_ID,
   FLYOUT_HEADER_TITLE_TEST_ID,
 } from '../../public/flyout/right/components/test_ids';
-import { getDataTestSubjectSelector } from '../helpers/common';
+import { getClassSelector, getDataTestSubjectSelector } from '../helpers/common';
 
+/* Right section */
+
+export const DOCUMENT_DETAILS_FLYOUT_BODY = getDataTestSubjectSelector(FLYOUT_BODY_TEST_ID);
+export const DOCUMENT_DETAILS_FLYOUT_BODY_OVERFLOW = getClassSelector('euiFlyoutBody__overflow');
 export const DOCUMENT_DETAILS_FLYOUT_HEADER_TITLE = getDataTestSubjectSelector(
   FLYOUT_HEADER_TITLE_TEST_ID
 );
@@ -60,6 +65,8 @@ export const DOCUMENT_DETAILS_FLYOUT_TABLE_TAB_CONTENT =
   getDataTestSubjectSelector(TABLE_TAB_CONTENT_TEST_ID);
 export const DOCUMENT_DETAILS_FLYOUT_JSON_TAB_CONTENT =
   getDataTestSubjectSelector(JSON_TAB_CONTENT_TEST_ID);
+
+/* Left section */
 
 export const DOCUMENT_DETAILS_FLYOUT_VISUALIZE_TAB =
   getDataTestSubjectSelector(VISUALIZE_TAB_TEST_ID);

@@ -23,6 +23,7 @@ import {
   openJsonTab,
   openOverviewTab,
   openTableTab,
+  scrollWithinDocumentDetailsExpandableFlyoutRightSection,
 } from '../../../tasks/document_expandable_flyout';
 import { cleanKibana } from '../../../tasks/common';
 import { login, visit } from '../../../tasks/login';
@@ -73,6 +74,9 @@ describe.skip('Alert details expandable flyout right panel', { testIsolation: fa
     cy.get(DOCUMENT_DETAILS_FLYOUT_TABLE_TAB_CONTENT).should('be.visible');
 
     openJsonTab();
+    // the json component is rendered within a dom element with overflow, so Cypress isn't finding it
+    // this next line is a hack that scrolls to the middle of it (vertically) to ensure Cypress finds it
+    scrollWithinDocumentDetailsExpandableFlyoutRightSection(0, 4500);
     cy.get(DOCUMENT_DETAILS_FLYOUT_JSON_TAB_CONTENT).should('be.visible');
   });
 });

@@ -6,6 +6,8 @@
  */
 
 import {
+  DOCUMENT_DETAILS_FLYOUT_BODY,
+  DOCUMENT_DETAILS_FLYOUT_BODY_OVERFLOW,
   DOCUMENT_DETAILS_FLYOUT_COLLAPSE_DETAILS_BUTTON,
   DOCUMENT_DETAILS_FLYOUT_EXPAND_DETAILS_BUTTON,
   DOCUMENT_DETAILS_FLYOUT_HISTORY_TAB,
@@ -38,6 +40,14 @@ export const expandDocumentDetailsExpandableFlyoutLeftSection = () =>
  */
 export const collapseDocumentDetailsExpandableFlyoutLeftSection = () =>
   cy.get(DOCUMENT_DETAILS_FLYOUT_COLLAPSE_DETAILS_BUTTON).should('be.visible').click();
+
+/**
+ * Scroll to x-y positions within the right section of the document details expandable flyout
+ */
+export const scrollWithinDocumentDetailsExpandableFlyoutRightSection = (x: number, y: number) =>
+  cy.get(DOCUMENT_DETAILS_FLYOUT_BODY).within(() => {
+    cy.get(DOCUMENT_DETAILS_FLYOUT_BODY_OVERFLOW).scrollTo(x, y);
+  });
 
 /**
  * Open the Overview tab in the document details expandable flyout right section
