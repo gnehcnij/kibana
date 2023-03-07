@@ -7,5 +7,6 @@
 
 export const OVERVIEW_TAB_CONTENT_TEST_ID =
   'securitySolutionDocumentDetailsFlyoutOverviewTabContent';
-export const TABLE_TAB_CONTENT_TEST_ID = 'securitySolutionDocumentDetailsFlyoutTableTabContent';
+export const TABLE_TAB_CONTENT_TEST_ID = 'event-fields-browser';
 export const JSON_TAB_CONTENT_TEST_ID = 'securitySolutionDocumentDetailsFlyoutJsonTabContent';
+export const TABLE_TAB_ERROR_TEST_ID = 'securitySolutionAlertDetailsFlyoutTableTabError';

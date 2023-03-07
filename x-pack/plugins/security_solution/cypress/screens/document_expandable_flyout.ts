@@ -24,6 +24,7 @@ import {
   VISUALIZE_TAB_TEST_ID,
 } from '../../public/flyout/left/test_ids';
 import {
+  FLYOUT_BODY_TEST_ID,
   JSON_TAB_TEST_ID,
   OVERVIEW_TAB_TEST_ID,
   TABLE_TAB_TEST_ID,
@@ -40,6 +41,9 @@ import {
 } from '../../public/flyout/right/components/test_ids';
 import { getDataTestSubjectSelector } from '../helpers/common';
 
+/* Right section */
+
+export const DOCUMENT_DETAILS_FLYOUT_BODY = getDataTestSubjectSelector(FLYOUT_BODY_TEST_ID);
 export const DOCUMENT_DETAILS_FLYOUT_HEADER_TITLE = getDataTestSubjectSelector(
   FLYOUT_HEADER_TITLE_TEST_ID
 );
@@ -60,6 +64,8 @@ export const DOCUMENT_DETAILS_FLYOUT_TABLE_TAB_CONTENT =
   getDataTestSubjectSelector(TABLE_TAB_CONTENT_TEST_ID);
 export const DOCUMENT_DETAILS_FLYOUT_JSON_TAB_CONTENT =
   getDataTestSubjectSelector(JSON_TAB_CONTENT_TEST_ID);
+
+/* Left section */
 
 export const DOCUMENT_DETAILS_FLYOUT_VISUALIZE_TAB =
   getDataTestSubjectSelector(VISUALIZE_TAB_TEST_ID);
@@ -90,3 +96,16 @@ export const DOCUMENT_DETAILS_FLYOUT_INVESTIGATIONS_TAB_CONTENT = getDataTestSub
 export const DOCUMENT_DETAILS_FLYOUT_HISTORY_TAB_CONTENT = getDataTestSubjectSelector(
   HISTORY_TAB_CONTENT_TEST_ID
 );
+
+/* Table tab */
+
+export const DOCUMENT_DETAILS_FLYOUT_TABLE_TAB_FILTER = `.euiFieldSearch`;
+export const DOCUMENT_DETAILS_FLYOUT_TABLE_TAB_CLEAR_FILTER = `[data-test-subj="clearSearchButton"]`;
+export const DOCUMENT_DETAILS_FLYOUT_TABLE_TAB_TIMESTAMP_ROW = `[data-test-subj="event-fields-table-row-@timestamp"]`;
+export const DOCUMENT_DETAILS_FLYOUT_TABLE_TAB_ID_ROW = `[data-test-subj="event-fields-table-row-_id"]`;
+export const DOCUMENT_DETAILS_FLYOUT_TABLE_TAB_EVENT_TYPE_ROW = `[data-test-subj="event-fields-table-row-event.type"]`;
+export const DOCUMENT_DETAILS_FLYOUT_TABLE_TAB_ROW_CELL_FILTER_IN = `[data-test-subj="actionItem-security-detailsFlyout-cellActions-filterIn"]`;
+export const DOCUMENT_DETAILS_FLYOUT_TABLE_TAB_ROW_CELL_FILTER_OUT = `[data-test-subj="actionItem-security-detailsFlyout-cellActions-filterOut"]`;
+export const DOCUMENT_DETAILS_FLYOUT_TABLE_TAB_ROW_CELL_MORE_ACTIONS = `[data-test-subj="showExtraActionsButton"]`;
+export const DOCUMENT_DETAILS_FLYOUT_TABLE_TAB_ROW_CELL_ADD_TO_TIMELINE = `[data-test-subj="actionItem-security-detailsFlyout-cellActions-addToTimeline"]`;
+export const DOCUMENT_DETAILS_FLYOUT_TABLE_TAB_ROW_CELL_COPY_TO_CLIPBOARD = `[data-test-subj="actionItem-security-detailsFlyout-cellActions-copyToClipboard"]`;
