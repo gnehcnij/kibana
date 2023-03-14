@@ -55204,7 +55204,7 @@ async function isBazelBinAvailable(repoRootPath) {
     });
     const bazelVersion = await readBazelToolsVersionFile(repoRootPath, '.bazelversion');
 
-    if (installedVersion.stdout === `bazel ${bazelVersion}`) {
+    if (installedVersion.stdout.trim() === `bazel ${bazelVersion}`) {
       return true;
     } else {
       _log__WEBPACK_IMPORTED_MODULE_4__["log"].info(`[bazel_tools] Bazel is installed (${installedVersion.stdout}), but was expecting ${bazelVersion}`);

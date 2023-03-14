@@ -27,6 +27,7 @@ import {
   setAggParamValue,
   changeAggType,
   toggleEnabledAgg,
+  toggleHiddenAgg,
 } from './state';
 import type { AddSchema, ReorderAggs, DefaultEditorAggCommonProps } from '../agg_common_props';
 import type { EditorVisState } from './state/reducers';
@@ -93,6 +94,11 @@ function DefaultEditorDataTab({
     [dispatch]
   );
 
+  const onToggleHiddenAgg: DefaultEditorAggCommonProps['onToggleHiddenAgg'] = useCallback(
+    (...props) => dispatch(toggleHiddenAgg(...props)),
+    [dispatch]
+  );
+
   const commonProps = {
     addSchema,
     formIsTouched,
@@ -104,6 +110,7 @@ function DefaultEditorDataTab({
     setStateParamValue: setStateValue,
     onAggTypeChange,
     onToggleEnableAgg,
+    onToggleHiddenAgg,
     setValidity,
     setTouched,
     removeAgg: onAggRemove,

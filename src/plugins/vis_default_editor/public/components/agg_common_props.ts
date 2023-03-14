@@ -34,6 +34,7 @@ export interface DefaultEditorAggCommonProps extends DefaultEditorCommonProps {
   lastParentPipelineAggTitle?: string;
   setStateParamValue: <T extends keyof VisParams>(paramName: T, value: VisParams[T]) => void;
   onToggleEnableAgg: (aggId: AggId, isEnable: boolean) => void;
+  onToggleHiddenAgg: (aggId: AggId, isHidden: boolean) => void;
   removeAgg: (aggId: AggId) => void;
   schemas: Schema[];
 }

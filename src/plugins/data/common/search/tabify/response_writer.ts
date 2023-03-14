@@ -66,7 +66,7 @@ export class TabbedAggResponseWriter {
   }
 
   response(): Datatable {
-    return {
+    let result: Datatable = {
       type: 'datatable',
       columns: this.columns.map((column) => {
         const cleanedColumn: DatatableColumn = {
@@ -87,9 +87,9 @@ export class TabbedAggResponseWriter {
                 this.params.timeRange.timeFields &&
                 this.params.timeRange.timeFields.includes(column.aggConfig.params.field?.name)
                   ? {
-                      from: this.params.timeRange?.from?.toISOString(),
-                      to: this.params.timeRange?.to?.toISOString(),
-                    }
+                    from: this.params.timeRange?.from?.toISOString(),
+                    to: this.params.timeRange?.to?.toISOString(),
+                  }
                   : undefined,
               ...column.aggConfig.serialize(),
             },
@@ -98,6 +98,10 @@ export class TabbedAggResponseWriter {
         return cleanedColumn;
       }),
       rows: this.rows,
-    };
+    }
+    console.log('================================================================================================================')
+    console.log(result)
+    console.log('================================================================================================================')
+    return result;
   }
 }

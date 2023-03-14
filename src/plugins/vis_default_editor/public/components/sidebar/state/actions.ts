@@ -46,6 +46,10 @@ type ToggleEnabledAgg = ActionType<
   EditorStateActionTypes.TOGGLE_ENABLED_AGG,
   { aggId: AggId; enabled: IAggConfig['enabled'] }
 >;
+type ToggleHiddenAgg = ActionType<
+  EditorStateActionTypes.TOGGLE_HIDDEN_AGG,
+  { aggId: AggId; hidden: IAggConfig['hidden'] }
+>;
 type UpdateStateParams = ActionType<
   EditorStateActionTypes.UPDATE_STATE_PARAMS,
   { params: VisParams }
@@ -60,6 +64,7 @@ export type EditorAction =
   | RemoveAgg
   | ReorderAggs
   | ToggleEnabledAgg
+  | ToggleHiddenAgg
   | UpdateStateParams;
 
 export interface EditorActions {
@@ -78,6 +83,7 @@ export interface EditorActions {
   removeAgg(aggId: AggId, schemas: Schema[]): RemoveAgg;
   reorderAggs(sourceAgg: IAggConfig, destinationAgg: IAggConfig): ReorderAggs;
   toggleEnabledAgg(aggId: AggId, enabled: IAggConfig['enabled']): ToggleEnabledAgg;
+  toggleHiddenAgg(aggId: AggId, hidden: IAggConfig['hidden']): ToggleHiddenAgg;
   updateStateParams(params: VisParams): UpdateStateParams;
 }
 
@@ -142,6 +148,14 @@ const toggleEnabledAgg: EditorActions['toggleEnabledAgg'] = (aggId, enabled) => 
   },
 });
 
+const toggleHiddenAgg: EditorActions['toggleHiddenAgg'] = (aggId, hidden) => ({
+  type: EditorStateActionTypes.TOGGLE_HIDDEN_AGG,
+  payload: {
+    aggId,
+    hidden,
+  },
+});
+
 const updateStateParams: EditorActions['updateStateParams'] = (params) => ({
   type: EditorStateActionTypes.UPDATE_STATE_PARAMS,
   payload: {
@@ -158,5 +172,6 @@ export {
   removeAgg,
   reorderAggs,
   toggleEnabledAgg,
+  toggleHiddenAgg,
   updateStateParams,
 };

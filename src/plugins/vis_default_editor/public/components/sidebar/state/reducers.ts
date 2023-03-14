@@ -189,6 +189,31 @@ const createEditorStateReducer =
         };
       }
 
+      case EditorStateActionTypes.TOGGLE_HIDDEN_AGG: {
+        const { aggId, hidden } = action.payload;
+
+        const newAggs = state.data.aggs!.aggs.map((agg) => {
+          if (agg.id === aggId) {
+            const parsedAgg = agg.toJSON();
+
+            return {
+              ...parsedAgg,
+              hidden,
+            };
+          }
+
+          return agg;
+        });
+
+        return {
+          ...state,
+          data: {
+            ...state.data,
+            aggs: createAggConfigs(state.data.indexPattern!, newAggs),
+          },
+        };
+      }
+
       case EditorStateActionTypes.UPDATE_STATE_PARAMS: {
         const { params } = action.payload;
 

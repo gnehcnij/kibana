@@ -26,6 +26,7 @@ export type AggConfigSerialized = Ensure<
   {
     type: string;
     enabled?: boolean;
+    hidden?: boolean;
     id?: string;
     params?: {} | SerializableRecord;
     schema?: string;
@@ -85,6 +86,7 @@ export class AggConfig {
   public aggConfigs: IAggConfigs;
   public id: string;
   public enabled: boolean;
+  public hidden: boolean;
   public params: any;
   public parent?: IAggConfigs;
   public brandNew?: boolean;
@@ -98,6 +100,7 @@ export class AggConfig {
     this.aggConfigs = aggConfigs;
     this.id = String(opts.id || AggConfig.nextId(aggConfigs.aggs as any));
     this.enabled = typeof opts.enabled === 'boolean' ? opts.enabled : true;
+    this.hidden = typeof opts.hidden === 'boolean' ? opts.hidden : false;
 
     // start with empty params so that checks in type/schema setters don't freak
     // because this.params is undefined
@@ -301,6 +304,7 @@ export class AggConfig {
     return {
       id: this.id,
       enabled: this.enabled,
+      hidden: this.hidden,
       type: this.type && this.type.name,
       params: outParams as SerializableRecord,
       ...(this.schema && { schema: this.schema }),

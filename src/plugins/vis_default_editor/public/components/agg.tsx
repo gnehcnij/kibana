@@ -57,6 +57,7 @@ function DefaultEditorAgg({
   setStateParamValue,
   onAggTypeChange,
   onToggleEnableAgg,
+  onToggleHiddenAgg,
   removeAgg,
   setAggsState,
   schemas,
@@ -173,7 +174,7 @@ function DefaultEditorAgg({
         id: 'disableAggregation',
         color: 'text',
         disabled: isDisabled,
-        type: 'eye',
+        type: 'lock',
         onClick: () => onToggleEnableAgg(agg.id, false),
         tooltip: i18n.translate('visDefaultEditor.agg.disableAggButtonTooltip', {
           defaultMessage: 'Disable {schemaTitle} {aggTitle} aggregation',
@@ -186,13 +187,39 @@ function DefaultEditorAgg({
       actionIcons.push({
         id: 'enableAggregation',
         color: 'text',
-        type: 'eyeClosed',
+        type: 'lockOpen',
         onClick: () => onToggleEnableAgg(agg.id, true),
         tooltip: i18n.translate('visDefaultEditor.agg.enableAggButtonTooltip', {
           defaultMessage: 'Enable {schemaTitle} {aggTitle} aggregation',
           values: { aggTitle, schemaTitle },
         }),
         dataTestSubj: 'toggleDisableAggregationBtn enable',
+      });
+    }
+    if (!agg.hidden) {
+      actionIcons.push({
+        id: 'hideAggregation',
+        color: 'text',
+        type: 'eyeClosed',
+        onClick: () => onToggleHiddenAgg(agg.id, true),
+        tooltip: i18n.translate('visDefaultEditor.agg.hideAggButtonTooltip', {
+          defaultMessage: 'Hide {schemaTitle} {aggTitle} aggregation',
+          values: { aggTitle, schemaTitle },
+        }),
+        dataTestSubj: 'toggleHiddenAggregationBtn hide',
+      });
+    }
+    if (agg.hidden) {
+      actionIcons.push({
+        id: 'viewAggregation',
+        color: 'text',
+        type: 'eye',
+        onClick: () => onToggleHiddenAgg(agg.id, false),
+        tooltip: i18n.translate('visDefaultEditor.agg.viewAggButtonTooltip', {
+          defaultMessage: 'View {schemaTitle} {aggTitle} aggregation',
+          values: { aggTitle, schemaTitle },
+        }),
+        dataTestSubj: 'toggleHiddenAggregationBtn view',
       });
     }
     if (isDraggable) {

@@ -53,6 +53,7 @@ function DefaultEditorAggGroup({
   setStateParamValue,
   onAggTypeChange,
   onToggleEnableAgg,
+  onToggleHiddenAgg,
   removeAgg,
   reorderAggs,
   setTouched,
@@ -173,6 +174,7 @@ function DefaultEditorAggGroup({
                     setStateParamValue={setStateParamValue}
                     onAggTypeChange={onAggTypeChange}
                     onToggleEnableAgg={onToggleEnableAgg}
+                    onToggleHiddenAgg={onToggleHiddenAgg}
                     removeAgg={removeAgg}
                     setAggsState={setAggsState}
                     schemas={schemas}
