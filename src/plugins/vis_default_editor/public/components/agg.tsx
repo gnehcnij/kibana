@@ -256,7 +256,7 @@ function DefaultEditorAgg({
 
   const buttonContent = (
     <>
-      {schemaTitle || agg.schema} {showDescription && <span>{aggDescription}</span>}
+      {agg.id} - {schemaTitle || agg.schema} {showDescription && <span>{aggDescription}</span>}
     </>
   );
 
