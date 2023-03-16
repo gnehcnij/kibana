@@ -10,7 +10,7 @@ import { isEmpty } from 'lodash';
 import { IAggConfigs } from '../aggs';
 import { tabifyGetColumns } from './get_columns';
 
-import { TabbedResponseWriterOptions, TabbedAggColumn, TabbedAggRow } from './types';
+import { TabbedAggColumn, TabbedAggRow, TabbedResponseWriterOptions } from './types';
 import { Datatable, DatatableColumn } from '../../../../expressions/common/expression_types/specs';
 
 interface BufferColumn {
@@ -66,7 +66,7 @@ export class TabbedAggResponseWriter {
   }
 
   response(): Datatable {
-    const result: Datatable = {
+    return {
       type: 'datatable',
       columns: this.columns.map((column) => {
         const cleanedColumn: DatatableColumn = {
@@ -99,9 +99,5 @@ export class TabbedAggResponseWriter {
       }),
       rows: this.rows,
     };
-    console.log('================================================================================================================');
-    console.log(result);
-    console.log('================================================================================================================');
-    return result;
   }
 }
