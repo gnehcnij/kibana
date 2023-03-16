@@ -196,31 +196,33 @@ function DefaultEditorAgg({
         dataTestSubj: 'toggleDisableAggregationBtn enable',
       });
     }
-    if (!agg.hidden) {
-      actionIcons.push({
-        id: 'hideAggregation',
-        color: 'text',
-        type: 'eye',
-        onClick: () => onToggleHiddenAgg(agg.id, true),
-        tooltip: i18n.translate('visDefaultEditor.agg.hideAggButtonTooltip', {
-          defaultMessage: 'Hide {schemaTitle} {aggTitle} aggregation',
-          values: { aggTitle, schemaTitle },
-        }),
-        dataTestSubj: 'toggleHiddenAggregationBtn hide',
-      });
-    }
-    if (agg.hidden) {
-      actionIcons.push({
-        id: 'viewAggregation',
-        color: 'text',
-        type: 'eyeClosed',
-        onClick: () => onToggleHiddenAgg(agg.id, false),
-        tooltip: i18n.translate('visDefaultEditor.agg.viewAggButtonTooltip', {
-          defaultMessage: 'View {schemaTitle} {aggTitle} aggregation',
-          values: { aggTitle, schemaTitle },
-        }),
-        dataTestSubj: 'toggleHiddenAggregationBtn view',
-      });
+    if (agg.schema === 'metric') {
+      if (!agg.hidden) {
+        actionIcons.push({
+          id: 'hideAggregation',
+          color: 'text',
+          type: 'eye',
+          onClick: () => onToggleHiddenAgg(agg.id, true),
+          tooltip: i18n.translate('visDefaultEditor.agg.hideAggButtonTooltip', {
+            defaultMessage: 'Hide {schemaTitle} {aggTitle} aggregation',
+            values: { aggTitle, schemaTitle },
+          }),
+          dataTestSubj: 'toggleHiddenAggregationBtn hide',
+        });
+      }
+      if (agg.hidden) {
+        actionIcons.push({
+          id: 'viewAggregation',
+          color: 'text',
+          type: 'eyeClosed',
+          onClick: () => onToggleHiddenAgg(agg.id, false),
+          tooltip: i18n.translate('visDefaultEditor.agg.viewAggButtonTooltip', {
+            defaultMessage: 'View {schemaTitle} {aggTitle} aggregation',
+            values: { aggTitle, schemaTitle },
+          }),
+          dataTestSubj: 'toggleHiddenAggregationBtn view',
+        });
+      }
     }
     if (isDraggable) {
       actionIcons.push({
