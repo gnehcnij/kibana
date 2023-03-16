@@ -287,7 +287,7 @@ export class AggConfigs {
           subAggs[agg.config.id] = agg.dsl;
           // if a nested metric agg has parent aggs, we have to add them to every level of the tree
           // to make sure "bucket_path" references in the nested metric agg itself are still working
-          if (agg.dsl.parentAggs) {
+          if (agg.dsl && agg.dsl.parentAggs) {
             Object.entries(agg.dsl.parentAggs).forEach(([parentAggId, parentAgg]) => {
               subAggs[parentAggId] = parentAgg;
             });
