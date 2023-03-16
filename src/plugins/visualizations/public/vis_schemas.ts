@@ -98,7 +98,9 @@ export const getVisSchemas = <TVisParams>(
     return schemas;
   }
 
-  const responseAggs = vis.data.aggs.getResponseAggs().filter((agg: IAggConfig) => agg.enabled);
+  const responseAggs = vis.data.aggs
+    .getResponseAggs()
+    .filter((agg: IAggConfig) => agg.enabled && !agg.hidden);
   const isHierarchical = vis.isHierarchical();
   const metrics = responseAggs.filter((agg: IAggConfig) => agg.type.type === 'metrics');
   responseAggs.forEach((agg: IAggConfig) => {

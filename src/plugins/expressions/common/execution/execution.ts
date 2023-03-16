@@ -402,6 +402,14 @@ export class Execution<
           >
       ),
       map((output) => {
+        // metric才追加hidden属性
+        const { value } = output;
+        if (value) {
+          const { schema } = value;
+          if (schema && (schema === 'metric' || schema === 'bucket')) {
+            value.hidden = args.hidden;
+          }
+        }
         // Validate that the function returned the type it said it would.
         // This isn't required, but it keeps function developers honest.
         const returnType = getType(output);
@@ -473,10 +481,14 @@ export class Execution<
         argAsts,
         (acc, argAst, argName) => {
           const argDef = getByAlias(argDefs, argName);
-          if (!argDef) {
+          if (!argDef && argName !== 'hidden') {
             throw new Error(`Unknown argument '${argName}' passed to function '${fnDef.name}'`);
           }
-          acc[argDef.name] = (acc[argDef.name] || []).concat(argAst);
+          if (!argDef) {
+            acc[argName] = argAst;
+          } else {
+            acc[argDef.name] = (acc[argDef.name] || []).concat(argAst);
+          }
           return acc;
         },
         {} as Record<string, ExpressionAstArgument[]>
@@ -513,7 +525,9 @@ export class Execution<
                   if (isExpressionValueError(output)) {
                     throw output.error;
                   }
-
+                  if (argName === 'hidden') {
+                    return this.cast(output, ['boolean']);
+                  }
                   return this.cast(output, argDefs[argName].types);
                 })
               )
@@ -535,7 +549,9 @@ export class Execution<
           if (!interpretFns.length) {
             return of([]);
           }
-
+          if (argName === 'hidden') {
+            return combineLatest(interpretFns.map((fn) => fn()));
+          }
           return argDefs[argName].resolve
             ? combineLatest(interpretFns.map((fn) => fn()))
             : of(interpretFns);
@@ -549,7 +565,9 @@ export class Execution<
             // function which would be treated as a promise
             zipObject(argNames, resolvedArgValues),
             // Just return the last unless the argument definition allows multiple
-            (argValues, argName) => (argDefs[argName].multi ? argValues : last(argValues))
+            (argValues, argName) => {
+              return argName !== 'hidden' && argDefs[argName].multi ? argValues : last(argValues);
+            }
           )
         )
       );

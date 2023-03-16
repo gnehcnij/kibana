@@ -200,7 +200,7 @@ function DefaultEditorAgg({
       actionIcons.push({
         id: 'hideAggregation',
         color: 'text',
-        type: 'eyeClosed',
+        type: 'eye',
         onClick: () => onToggleHiddenAgg(agg.id, true),
         tooltip: i18n.translate('visDefaultEditor.agg.hideAggButtonTooltip', {
           defaultMessage: 'Hide {schemaTitle} {aggTitle} aggregation',
@@ -213,7 +213,7 @@ function DefaultEditorAgg({
       actionIcons.push({
         id: 'viewAggregation',
         color: 'text',
-        type: 'eye',
+        type: 'eyeClosed',
         onClick: () => onToggleHiddenAgg(agg.id, false),
         tooltip: i18n.translate('visDefaultEditor.agg.viewAggButtonTooltip', {
           defaultMessage: 'View {schemaTitle} {aggTitle} aggregation',
