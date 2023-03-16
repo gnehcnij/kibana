@@ -403,11 +403,13 @@ export class Execution<
       ),
       map((output) => {
         // metric才追加hidden属性
-        const { value } = output;
-        if (value) {
-          const { schema } = value;
-          if (schema && (schema === 'metric' || schema === 'bucket')) {
-            value.hidden = args.hidden;
+        if (output) {
+          const { value } = output;
+          if (value) {
+            const { schema } = value;
+            if (schema && (schema === 'metric' || schema === 'bucket')) {
+              value.hidden = args.hidden;
+            }
           }
         }
         // Validate that the function returned the type it said it would.
