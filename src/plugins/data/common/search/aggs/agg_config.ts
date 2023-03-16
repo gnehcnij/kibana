@@ -383,6 +383,7 @@ export class AggConfig {
             // Expression args which are provided to all functions
             id: [this.id],
             enabled: [this.enabled],
+            hidden: [this.hidden],
             ...(this.schema ? { schema: [this.schema] } : {}), // schema may be undefined
           },
         },
