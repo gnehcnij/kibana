@@ -407,7 +407,7 @@ export class Execution<
           const { value } = output;
           if (value) {
             const { schema } = value;
-            if (schema && (schema === 'metric' || schema === 'bucket')) {
+            if (schema && schema === 'metric') {
               value.hidden = args.hidden;
             }
           }
