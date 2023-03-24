@@ -114,6 +114,7 @@ describe('DefaultEditorAgg component', () => {
       setStateParamValue: jest.fn(),
       onAggTypeChange: jest.fn(),
       onToggleEnableAgg: () => {},
+      onToggleHiddenAgg: () => {},
     };
   });
 

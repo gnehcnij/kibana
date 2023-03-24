@@ -19,7 +19,7 @@ export const Clean: GlobalTask = {
       [
         config.resolveFromRepo('build'),
         config.resolveFromRepo('target'),
-        config.resolveFromRepo('.node_binaries'),
+        // config.resolveFromRepo('.node_binaries'),
       ],
       log
     );

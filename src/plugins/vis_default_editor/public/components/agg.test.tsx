@@ -27,6 +27,7 @@ describe('DefaultEditorAgg component', () => {
   let setAggParamValue: jest.Mock;
   let setStateParamValue: jest.Mock;
   let onToggleEnableAgg: jest.Mock;
+  let onToggleHiddenAgg: jest.Mock;
   let removeAgg: jest.Mock;
   let setAggsState: jest.Mock;
 
@@ -34,6 +35,7 @@ describe('DefaultEditorAgg component', () => {
     setAggParamValue = jest.fn();
     setStateParamValue = jest.fn();
     onToggleEnableAgg = jest.fn();
+    onToggleHiddenAgg = jest.fn();
     removeAgg = jest.fn();
     setAggsState = jest.fn();
 
@@ -62,6 +64,7 @@ describe('DefaultEditorAgg component', () => {
       onAggTypeChange: () => {},
       setAggsState,
       onToggleEnableAgg,
+      onToggleHiddenAgg,
       removeAgg,
       schemas: [
         {
