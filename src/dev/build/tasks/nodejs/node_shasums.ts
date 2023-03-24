@@ -10,8 +10,8 @@ import { ToolingLog } from '@kbn/dev-utils';
 import { downloadToString } from '../../lib/download';
 
 export async function getNodeShasums(log: ToolingLog, nodeVersion: string) {
-  // const url = `https://us-central1-elastic-kibana-184716.cloudfunctions.net/kibana-ci-proxy-cache/dist/v${nodeVersion}/SHASUMS256.txt`;
-  const url = `http://localhost:8888/node-dist.txt`;
+  const url = `https://us-central1-elastic-kibana-184716.cloudfunctions.net/kibana-ci-proxy-cache/dist/v${nodeVersion}/SHASUMS256.txt`;
+  // const url = `http://localhost:8888/SHASUMS256.txt`;
 
   log.debug('Downloading shasum values for node version', nodeVersion, 'from', url);
 
